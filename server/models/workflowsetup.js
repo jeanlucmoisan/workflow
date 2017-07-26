@@ -1,43 +1,42 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, Sequelize) {
   var WorkflowSetup = sequelize.define('WorkflowSetup', {
     id: {
-      type: DataTypes.UUID,
+      type: Sequelize.UUID,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4
+      defaultValue: Sequelize.UUIDV4
     },
     tenant: {
-	  DataTypes.STRING
+	  type: Sequelize.STRING
 	},
     wfCode: {
-	DataTypes.STRING
+	  type: Sequelize.STRING
 	},
     stepNum: {
-	  DataTypes.INTEGER
+	  type: Sequelize.INTEGER
 	},
     stepType:{
-	  DataTypes.STRING
+	  type: Sequelize.STRING
 	},
     descr: {
-	  DataTypes.STRING
+	  type: Sequelize.STRING
 	},
     emitNotif: {
-	  DataTypes.STRING
+	  type: Sequelize.STRING
 	},
     durationDays: {
-	  DataTypes.INTEGER
+	  type: Sequelize.INTEGER
 	},
     alertRule: {
-	  DataTypes.STRING(10000)
+	  type: Sequelize.STRING(10000)
 	},
     created_at: {
-      type: DataTypes.DATE,
+      type: Sequelize.DATE,
       allowNull: false
     },
-    updated_at:  DataTypes.DATE,
-    deleted_at: DataTypes.DATE
+    updated_at:  Sequelize.DATE,
+    deleted_at:  Sequelize.DATE
   },{
-    }
   });
   return WorkflowSetup;
 };
