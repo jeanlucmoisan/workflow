@@ -2,62 +2,62 @@
 
 module.exports = (app, db) => {
 
-  // GET all users
-  app.get('/users', (req, res) => {
-    db.user.findAll()
-      .then(users => {
-        res.json(users);
+  // GET all workflowsetups
+  app.get('/workflowsetups', (req, res) => {
+    db.workflowsetup.findAll()
+      .then(workflowsetups => {
+        res.json(workflowsetups);
       });
   });
 
-  // GET one user by id
-  app.get('/user/:id', (req, res) => {
+  // GET one workflowsetup by id
+  app.get('/workflowsetup/:id', (req, res) => {
     const id = req.params.id;
-    db.user.find({
+    db.workflowsetup.find({
       where: { id: id}
     })
-      .then(user => {
-        res.json(user);
+      .then(workflowsetup => {
+        res.json(workflowsetup);
       });
   });
 
-  // POST single user
-  app.post('/user', (req, res) => {
+  // POST single workflowsetup
+  app.post('/workflowsetup', (req, res) => {
     const name = req.body.name;
     const role = req.body.role;
-    db.user.create({
+    db.workflowsetup.create({
       name: name,
 	  password:password,
       role: role
     })
-      .then(newuser => {
-        res.json(newuser);
+      .then(newworkflowsetup => {
+        res.json(newworkflowsetup);
       })
   });
 
-  // PATCH single user
-  app.patch('/user/:id', (req, res) => {
+  // PATCH single workflowsetup
+  app.patch('/workflowsetup/:id', (req, res) => {
     const id = req.params.id;
     const updates = req.body.updates;
-    db.user.find({
+    db.workflowsetup.find({
       where: { id: id }
     })
-      .then(user => {
-        return user.updateAttributes(updates)
+      .then(workflowsetup => {
+        return workflowsetup.updateAttributes(updates)
       })
-      .then(updateduser => {
-        res.json(updateduser);
+      .then(updatedworkflowsetup => {
+        res.json(updatedworkflowsetup);
       });
   });
 
-  // DELETE single user
-  app.delete('/user/:id', (req, res) => {
+  // DELETE single workflowsetup
+  app.delete('/workflowsetup/:id', (req, res) => {
     const id = req.params.id;
-    db.user.destroy({
+    db.workflowsetup.destroy({
       where: { id: id }
     })
-      .then(deleteduser => {
-        res.json(deleteduser);
+      .then(deletedworkflowsetup => {
+        res.json(deletedworkflowsetup);
       });
   });
 };

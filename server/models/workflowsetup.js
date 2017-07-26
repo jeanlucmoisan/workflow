@@ -37,8 +37,6 @@ module.exports = function(sequelize, DataTypes) {
     updated_at:  DataTypes.DATE,
     deleted_at: DataTypes.DATE
   },{
-    paranoid: true,
-    underscored: true
     }
   });
   return WorkflowSetup;
