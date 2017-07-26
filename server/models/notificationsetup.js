@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, Sequelize) {
-  var WorkflowSetup = sequelize.define('WorkflowSetup', {
+  var NotificationSetup = sequelize.define('NotificationSetup', {
     uuid: {
       type: Sequelize.UUID,
       primaryKey: true,
@@ -9,26 +9,18 @@ module.exports = function(sequelize, Sequelize) {
     tenant: {
 	  type: Sequelize.STRING
 	},
-    wfCode: {
+    notifCode: {
 	  type: Sequelize.STRING
 	},
-    stepNum: {
-	  type: Sequelize.INTEGER
-	},
-    stepType:{
-	  type: Sequelize.STRING
-	},
-    descr: {
-	  type: Sequelize.STRING
-	},
-    emitNotif: {
-	  type: Sequelize.STRING
-	},
-    durationDays: {
-	  type: Sequelize.INTEGER
-	},
-    alertRule: {
+    msgTemplate: {
 	  type: Sequelize.STRING(10000)
+	},
+    notifLevel:{
+	  type: Sequelize.ENUM('1','2','3')
+	},
+	// commTypes is an array of values among E,S,M,T
+    commTypes: {
+	  type: Sequelize.STRING
 	},
     created_at: {
       type: Sequelize.DATE,
@@ -38,5 +30,5 @@ module.exports = function(sequelize, Sequelize) {
     deleted_at:  Sequelize.DATE
   },{
   });
-  return WorkflowSetup;
+  return NotificationSetup;
 };
